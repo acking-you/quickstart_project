@@ -143,7 +143,7 @@ func ParseTag(tag string) (tagNums *[CRUDLen]TagInfo, err error) {
 func ParseTagHandler(structName, fieldName, tag string) {
 	tagInfos, err := ParseTag(tag)
 	if err != nil {
-		fmt.Printf("dao.ParseTagHandler failed in parse %s \n", tag)
+		fmt.Printf("dao.ParseTagHandler failed in parse %s err:%s\n", tag, err.Error())
 	}
 	(*GetTagInfoMap())[getKey(structName, fieldName)] = tagInfos
 }
