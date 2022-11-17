@@ -11,7 +11,7 @@ import (
 	"path/filepath"
 )
 
-func Quickstart(config *Config) error {
+func Run(config *Config) error {
 	if config.enableGoTidy {
 		util.EnableGoTidy = true
 	}

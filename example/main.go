@@ -11,7 +11,7 @@ func genChainStyleConfig() {
 
 func testQuickStart() {
 
-	err := quickstart.Quickstart(quickstart.DefaultConfig("github.com/ACking-you/quickstart_project/example", "root", "123", "127.0.0.1", 3306, "my_chat").
+	err := quickstart.Run(quickstart.DefaultConfig("github.com/ACking-you/quickstart_project/example", "root", "123", "127.0.0.1", 3306, "my_chat").
 		EnableDebug(true).BasePath("./example"))
 	if err != nil {
 		panic(err)
