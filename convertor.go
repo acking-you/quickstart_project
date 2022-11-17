@@ -7,10 +7,14 @@ import (
 	"github.com/ACking-you/quickstart_project/dao_convertor"
 	"github.com/ACking-you/quickstart_project/model_convertor"
 	"github.com/ACking-you/quickstart_project/service_convertor"
+	"github.com/ACking-you/quickstart_project/util"
 	"path/filepath"
 )
 
 func Quickstart(config *Config) error {
+	if config.enableGoTidy {
+		util.EnableGoTidy = true
+	}
 	modelConfig := model_convertor.DefaultConfig(config.username, config.password, config.host, config.port, config.database)
 	modelConfig.EnableDebug(config.enableDebug).
 		EnableJsonTag(config.enableJsonTag).

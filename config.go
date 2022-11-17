@@ -16,6 +16,7 @@ type Config struct {
 	table               string                      //如果指定了表，则只针对该表生成
 	realTableNameMethod string                      //若该字段被赋值，则以该字段名生成获取真实表明的方法
 	tagKey              string                      // tag字段的key值,默认是gorm
+	enableGoTidy        bool                        //是否自动go get
 	enableJsonTag       bool                        // 是否添加json的tag, 默认不添加
 	enableDebug         bool                        //是否打印结构体的解析结果
 	tableFilterHook     func(tableName string) bool //用于过滤不需要生成的表结构
@@ -35,6 +36,7 @@ func DefaultConfig(projectName, username, password, host string, port int, datab
 		basePath:            "./", //默认为当前项目根目录
 		realTableNameMethod: "TableName",
 		tagKey:              "gorm",
+		enableGoTidy:        false,
 		enableJsonTag:       false,
 		enableDebug:         false,
 		tableFilterHook:     nil,
@@ -98,6 +100,11 @@ func (Output *Config) RealTableNameMethod(t string) *Config {
 
 func (Output *Config) TagKey(t string) *Config {
 	Output.tagKey = t
+	return Output
+}
+
+func (Output *Config) EnableGoTidy(t bool) *Config {
+	Output.enableGoTidy = t
 	return Output
 }
 
