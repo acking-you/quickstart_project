@@ -11,8 +11,12 @@ func genChainStyleConfig() {
 
 func testQuickStart() {
 
-	err := quickstart.Run(quickstart.DefaultConfig("github.com/ACking-you/quickstart_project/example", "root", "123", "127.0.0.1", 3306, "my_chat").
-		EnableDebug(true).BasePath("./example"))
+	config := quickstart.DefaultConfig("项目名称", "root", "123", "127.0.0.1", 3306, "数据库名称").
+		//打印出生成结果
+		EnableDebug(true).
+		//改变基本路径（默认为项目根目录）
+		BasePath("./example")
+	err := quickstart.Run(config)
 	if err != nil {
 		panic(err)
 	}

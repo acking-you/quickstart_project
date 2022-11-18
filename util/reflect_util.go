@@ -40,6 +40,7 @@ func UpdateFromStruct(v interface{}, tagKey string, handler ParseTagHandler) err
 		PackagePath: packagePath + ",",
 		PackageName: packageName,
 	}
+	//根据该类型字段更新对应元信息
 	for i := 0; i < info.NumField(); i++ {
 		value := info.Field(i)
 		fieldTypeName := value.Type.String()

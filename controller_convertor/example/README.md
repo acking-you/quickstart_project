@@ -1,30 +1,29 @@
 ## controller_convertor example
-
+不支持tag，更多的config，请移步到 [config](../config.go)
 ```go
 package main
 
-import (
-	controller_convertor "github.com/ACking-you/quickstart_project/controller_convertor"
-	"github.com/ACking-you/quickstart_project/controller_convertor/example/models"
-	"github.com/ACking-you/quickstart_project/service_convertor"
-)
+import "github.com/ACking-you/quickstart_project/controller_convertor"
 
-func CreateService() {
-	config := service_convertor.DefaultConfig().SavePath("./example/service").EnableDebug(true)
-	err := service_convertor.NewStruct2Service(config).AutoMigrate(&models.Student{}, &models.Score{}, &models.Teacher{}).Run()
-	if err != nil {
-		panic(err)
-	}
+type User struct {
+	Id       int
+	Username string
+	Password string
 }
 
-func testController() {
+func autoController() {
 	config := controller_convertor.DefaultCConfig().
-		SavePath("./example/controller").
-		EnableDebug(true).
-		EnableQuery(false)
+		//支持配置是否生成CRUD
+		EnableQuery(false).
+		//是否生成gin的棋手例子
+		EnableGinExample(true).
+		//是否生成封装好的Response类
+		EnableResponse(true).
+		//是否生成VO和前端数据的绑定代码
+		EnableVOBind(true)
 
 	err := controller_convertor.NewStruct2Controller(config).
-		AutoMigrate(&models.Score{}, &models.Student{}, &models.Teacher{}).
+		AutoMigrate(&User{}).
 		Run()
 	if err != nil {
 		panic(err)
@@ -32,6 +31,6 @@ func testController() {
 }
 
 func main() {
-	testController()
+	autoController()
 }
 ```

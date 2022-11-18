@@ -2,8 +2,8 @@ package tests
 
 import (
 	"fmt"
+	"github.com/ACking-you/quickstart_project/util"
 	"github.com/stretchr/testify/assert"
-	"quickstart/util"
 	"testing"
 )
 
