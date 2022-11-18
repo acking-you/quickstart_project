@@ -22,8 +22,8 @@
 
 3.一键根据数据库快速逆向生成所有业务代码：
 
-```
- import (
+```go
+ import (
      "github.com/ACking-you/quickstart_project"
      "github.com/ACking-you/quickstart_project/util"
  )
